@@ -1,0 +1,16 @@
+# Description: The fastest terminal file manager ever written. 
+# URL: https://github.com/jarun/nnn
+# Maintainer: Ergo
+# Depends on: ncurses
+
+name=nnn
+version=2.0
+release=1
+source=(https://github.com/jarun/$name/archive/v$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	make PREFIX=/usr
+	make PREFIX=/usr DESTDIR=$PKG install
+}

@@ -1,0 +1,16 @@
+# Description: Vim-fork focused on extensibility and usability 
+# URL: https://github.com/neovim/neovim
+# Maintainer: ergo
+# Depends on: 
+
+name=neovim
+version=0.3.1
+release=1
+source=(https://github.com/neovim/$name/archive/v$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=/usr"
+	make  DESTDIR=$PKG install
+}

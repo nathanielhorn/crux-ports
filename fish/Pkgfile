@@ -1,0 +1,20 @@
+# Description: The user-friendly command line shell. 
+# URL: https://github.com/fish-shell/fish-shell
+# Maintainer: ergo
+# Depends on: 
+
+name=fish-shell
+version=2.7.1
+release=1
+source=(https://github.com/fish-shell/$name/releases/download/$version/fish-$version.tar.gz)
+
+build() {
+	cd $name
+
+	mkdir build; cd build
+	cmake ..
+	make PREFIX=/usr
+	sudo make DESTIR=$PKG install
+
+
+}

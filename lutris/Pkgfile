@@ -1,0 +1,20 @@
+# Description: Open Gaming platform for Linux 
+# URL: https://lutris.net/
+# Maintainer: Ergo
+# Depends on: python3-gobject pyyaml gtk3 cabextract unrar unzip p7zip curl python3-setuptools psmisc 
+
+name=lutris
+version=0.4.23
+release=1
+source=(https://lutris.net/releases/lutris_$version.tar.xz)
+
+build() {  
+	cd $name 
+
+	/usr/bin/python3 setup.py build
+
+	/usr/bin/python3 setup.py install \
+		--prefix=/usr --root=$PKG --optimize=1
+	}	
+
+

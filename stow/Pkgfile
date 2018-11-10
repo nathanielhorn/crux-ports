@@ -1,0 +1,19 @@
+# Description: Program for managing the installation of software packages.
+# URL:         http://www.gnu.org/s/stow
+# Packager:    Joe9, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
+
+name=stow
+version=2.1.1
+release=1
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr --mandir=/usr/man
+    make
+    make DESTDIR=$PKG install
+
+    rm -rf $PKG/usr/share
+}
+
